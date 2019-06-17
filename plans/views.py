@@ -233,7 +233,7 @@ class CreateOrderView(LoginRequired, CreateView):
         # unless it's a free plan. Otherwise, the should use Plan Change View for this
         # kind of action
         if not self.request.user.userplan.is_expired() \
-                and not self.request.user.userplan.plan.is_free() \
+                and not self.request.user.userplan.plan.is_free \
                 and self.request.user.userplan.plan != self.plan_pricing.plan:
             raise Http404
 

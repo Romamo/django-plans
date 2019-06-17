@@ -154,7 +154,7 @@ class PlansTestCase(TestCase):
         self.assertIsNotNone(u.userplan.expire)
 
         plan = Plan.objects.get(name="Free")
-        self.assertTrue(plan.is_free())
+        self.assertTrue(plan.is_free)
         self.assertNotEqual(u.userplan.plan, plan)
 
         # Switch to Free Plan
