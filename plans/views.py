@@ -186,6 +186,8 @@ class CreateOrderView(LoginRequired, CreateView):
         country = getattr(billing_info, 'country', None)
         if not country is None:
             country = country.code
+        if not country and self.request.META.get('GEO_COUNTRY'):
+            country = self.request.META['GEO_COUNTRY']
         tax_number = getattr(billing_info, 'tax_number', None)
 
         # Calculating tax can be complex task (e.g. VIES webservice call)
