@@ -22,7 +22,6 @@ from django.template import Context
 from django.template.base import Template
 from django.utils import translation
 from django.utils.timezone import now
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 
 from django_countries.fields import CountryField
@@ -43,7 +42,6 @@ accounts_logger = logging.getLogger('accounts')
 # Create your models here.
 
 
-@python_2_unicode_compatible
 class Plan(OrderedModel):
     """
     Single plan defined in the system. A plan can customized (referred to user) which means
