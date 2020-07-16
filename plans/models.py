@@ -165,7 +165,6 @@ class BillingInfo(models.Model):
 #        super(BillingInfo, self).clean()
 #        self.tax_number = BillingInfo.clean_tax_number(self.tax_number, self.country)
 
-@python_2_unicode_compatible
 class UserPlan(models.Model):
     """
     Currently selected plan for user account.
@@ -339,7 +338,6 @@ class UserPlan(models.Model):
         return userplans
 
 
-@python_2_unicode_compatible
 class Pricing(models.Model):
     """
     Type of plan period that could be purchased (e.g. 10 days, month, year, etc)
@@ -359,7 +357,6 @@ class Pricing(models.Model):
         return "%s (%d " % (self.name, self.period) + "%s)" % _("days")
 
 
-@python_2_unicode_compatible
 class Quota(OrderedModel):
     """
     Single countable or boolean property of system (limitation).
@@ -387,7 +384,6 @@ class PlanPricingManager(models.Manager):
         return super(PlanPricingManager, self).get_query_set().select_related('plan', 'pricing')
 
 
-@python_2_unicode_compatible
 class PlanPricing(models.Model):
     plan = models.ForeignKey('Plan', on_delete=models.CASCADE)
     pricing = models.ForeignKey('Pricing', on_delete=models.CASCADE)
@@ -421,7 +417,6 @@ class PlanQuota(models.Model):
         verbose_name_plural = _("Plans quotas")
 
 
-@python_2_unicode_compatible
 class Order(models.Model):
     """
     Order in this app supports only one item per order. This item is defined by
@@ -561,7 +556,6 @@ class InvoiceDuplicateManager(models.Manager):
         return super(InvoiceDuplicateManager, self).get_query_set().filter(type=Invoice.INVOICE_TYPES['DUPLICATE'])
 
 
-@python_2_unicode_compatible
 class Invoice(models.Model):
     """
     Single invoice document.
